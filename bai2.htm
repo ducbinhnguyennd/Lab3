@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bài 2 Đọc File</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <style>
+    .container {
+      position: relative;
+      width: 400px;
+      height: 400px;
+    }
+
+    .background-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-image: url('https://i.pinimg.com/originals/5d/03/42/5d0342d25463dc94b61f479c0ea1a5a7.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Bootstrap Example</h1>
+
+    <!-- Sử dụng Table -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>John</td>
+          <td>Doe</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jane</td>
+          <td>Smith</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Mike</td>
+          <td>Johnson</td>
+        </tr>
+      </tbody>
+    </table>
+
+ 
+    <div class="container">
+      <!-- Ảnh ở dưới -->
+      <div class="background-image"></div>
+      <!-- Văn bản đè lên -->
+      <div class="overlay-text">Z INDEX</div>
+    </div>
+
+    <!-- Sử dụng Form Validation -->
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" required>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom02" class="form-label">Last name</label>
+        <input type="text" class="form-control" id="validationCustom02" required>
+        <div class="invalid-feedback">
+          Please provide a valid last name.
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Username</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+          <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Please choose a valid username.
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Submit form</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+  
+    document.querySelector('form').addEventListener('submit', function (event) {
+      event.preventDefault(); //k gửi form đc
+
+
+      var lastNameInput = document.getElementById('validationCustom02');
+      if (lastNameInput.value.trim() === '') {
+        lastNameInput.classList.add('is-invalid'); 
+      } else {
+        lastNameInput.classList.remove('is-invalid');
+        lastNameInput.classList.add('is-valid'); 
+      }
+
+      // Kiểm tra trường Username
+      var usernameInput = document.getElementById('validationCustomUsername');
+      if (usernameInput.value.trim() === '') {
+        usernameInput.classList.add('is-invalid');
+      } else {
+        usernameInput.classList.remove('is-invalid');
+        usernameInput.classList.add('is-valid');
+      }
+    });
+  </script>
+</body>
+</html>
